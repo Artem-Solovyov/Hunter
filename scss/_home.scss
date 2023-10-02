@@ -1,0 +1,10 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    @include adaptiveValue("row-gap", 120, 40, 1200, 320, 1);
+}
+
+@import "blocks/popup";
+@import "blocks/hero";
+@import "blocks/recommendation";
+@import "blocks/sell";

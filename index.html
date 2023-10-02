@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artem Sloviov</title>
+    <link rel="stylesheet" href="css/main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js" defer></script>
+    <script src="./js/app.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Header -->
+      <header class="header">
+        <div class="header__container">
+          <a href="#" class="header__logo">
+            <img class="header__svg" src="images/logo.svg" alt="Logo" />
+            <h2 class="header__title">Hounter</h2>
+          </a>
+          <!-- Menu -->
+          <div class="header__menu menu">
+            <button type="button" class="menu__icon icon-menu"><span></span></button>
+            <div class="menu__body">
+              <!-- Navigation -->
+              <nav class="header__nav nav-header">
+                <ul class="nav-header__list">
+                  <li class="nav-header__item">
+                    <a href="#" class="nav-header__button button button--link">
+                      <div class="button__content">About Us</div>
+                    </a>
+                  </li>
+                  <li class="nav-header__item">
+                    <a href="#" class="nav-header__button button button--link">
+                      <div class="button__content">Article</div>
+                    </a>
+                  </li>
+
+                  <li data-spollers class="nav-header__item spollers-nav">
+                    <div class="spollers-nav__item nav-header__button">
+                      <a
+                        href="#"
+                        data-spoller
+                        data-spoller-close
+                        class="button__content _icon-arrow spollers-nav__title button button--link"
+                        >Property</a
+                      >
+                      <ul class="spollers-nav__body">
+                        <li class="spollers-nav__link">
+                          <a href="#">House</a>
+                        </li>
+                        <li class="spollers-nav__link">
+                          <a href="#">Villa</a>
+                        </li>
+                        <li class="spollers-nav__link">
+                          <a href="#">Apartment</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+              <button class="header__button button button--sign">
+                <div class="button__content">Sign Up!</div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Content -->
+      <main class="page">
+        <!-- Hero block -->
+        <section class="hero">
+          <svg xmlns="http://www.w3.org/2000/svg" width="441" height="481" viewBox="0 0 441 481" fill="none">
+            <g>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M298.209 155.001C287.173 189.669 261.914 216.19 239.037 244.462C219.326 268.821 198.32 290.535 173.292 309.373C145.414 330.356 119.122 359.558 84.2732 360.946C49.3115 362.339 19.9507 336.407 -8.93251 316.634C-36.0888 298.044 -55.4251 272.427 -78.8344 249.286C-110.874 217.612 -166.167 199.642 -172.434 155.001C-178.493 111.845 -134.511 78.3497 -107.647 44.0607C-83.8375 13.6712 -57.2616 -13.2453 -24.5624 -33.7378C9.01465 -54.7805 45.0816 -81.9806 84.2732 -76.2154C123.401 -70.4596 140.038 -20.5008 176.088 -4.2213C218.116 14.7576 280.755 -11.4202 308.836 25.1917C335.703 60.222 311.604 112.919 298.209 155.001Z"
+                fill="#82F7FF"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_1_32"
+                x="-293"
+                y="-197"
+                width="734"
+                height="678"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="60" result="effect1_foregroundBlur_1_32" />
+              </filter>
+            </defs>
+          </svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="688" height="396" viewBox="0 0 688 396" fill="none">
+            <g>
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M545.209 70.0007C534.173 104.669 508.914 131.19 486.037 159.462C466.326 183.821 445.32 205.535 420.292 224.373C392.414 245.356 366.122 274.558 331.273 275.946C296.311 277.339 266.951 251.407 238.067 231.634C210.911 213.044 191.575 187.427 168.166 164.286C136.126 132.612 80.8334 114.642 74.5661 70.0007C68.5073 26.8452 112.489 -6.65035 139.353 -40.9393C163.162 -71.3288 189.738 -98.2453 222.438 -118.738C256.015 -139.781 292.082 -166.981 331.273 -161.215C370.401 -155.46 387.038 -105.501 423.088 -89.2213C465.116 -70.2424 527.755 -96.4202 555.836 -59.8083C582.703 -24.778 558.604 27.919 545.209 70.0007Z"
+                fill="#82FFD2"
+              />
+            </g>
+            <defs>
+              <filter
+                id="filter0_f_1_33"
+                x="-46"
+                y="-282"
+                width="734"
+                height="678"
+                filterUnits="userSpaceOnUse"
+                color-interpolation-filters="sRGB"
+              >
+                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                <feGaussianBlur stdDeviation="60" result="effect1_foregroundBlur_1_33" />
+              </filter>
+            </defs>
+          </svg>
+          <div class="hero__container">
+            <!-- Left section -->
+            <div class="hero__content">
+              <div class="hero__body">
+                <div class="hero__main">
+                  <h1 class="hero__title">
+                    find the place to <br />
+                    live <span>your dreams</span><br />
+                    easily here
+                  </h1>
+                  <div class="hero__text">
+                    <p>
+                      Everything you need about finding your place to live will be here, where it will be easier for you
+                    </p>
+                  </div>
+                </div>
+                <form class="hero__search search-hero _icon-location">
+                  <input type="text" class="search-hero__input" placeholder="Search for the location you want!" />
+                  <button type="submit" class="search-hero__button button button--search">
+                    <div class="button__content _icon-arrow-right">Search</div>
+                  </button>
+                </form>
+                <article class="hero__partnership partnership">
+                  <h4 class="partnership__title">Our Partnership</h4>
+                  <ul class="partnership__list">
+                    <li class="partnership__item">
+                      <a href="#">
+                        <img src="./images/hero/traveloka.jpg" alt="Company" />
+                      </a>
+                    </li>
+                    <li class="partnership__item">
+                      <a href="#">
+                        <img src="./images/hero/tiket.jpg" alt="Company" />
+                      </a>
+                    </li>
+                    <li class="partnership__item">
+                      <a href="#">
+                        <img src="./images/hero/airbnb.jpg" alt="Company" />
+                      </a>
+                    </li>
+                    <li class="partnership__item">
+                      <a href="#">
+                        <img src="./images/hero/trip.jpg" alt="Company" />
+                      </a>
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+            <!-- Right section -->
+            <div class="hero__right">
+              <div class="hero__image">
+                <img class="hero__img" src="./images/hero/bg.jpg" alt="House" />
+                <!-- Slider main container -->
+                <div class="swiper hero__info info-hero">
+                  <!-- Additional required wrapper -->
+                  <div class="swiper-wrapper info-hero__wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/people/human01.jpg" alt="Image" />
+                          <img src="./images/people/human02.jpg" alt="Image" />
+                          <img src="./images/people/human03.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">1K+ People</h3>
+                          <div class="info-hero__text">Successfully Getting Home</div>
+                        </div>
+                      </article>
+                    </div>
+
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/hero/house.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">56 Houses</h3>
+                          <div class="info-hero__text">Sold Monthly</div>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/people/human03.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">4K+</h3>
+                          <div class="info-hero__text">People Looking for New Homes</div>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/people/human01.jpg" alt="Image" />
+                          <img src="./images/people/human02.jpg" alt="Image" />
+                          <img src="./images/people/human03.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">1K+ People</h3>
+                          <div class="info-hero__text">Successfully Getting Home</div>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/hero/house.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">56 Houses</h3>
+                          <div class="info-hero__text">Sold Monthly</div>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/hero/house.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">56 Houses</h3>
+                          <div class="info-hero__text">Sold Monthly</div>
+                        </div>
+                      </article>
+                    </div>
+                    <div class="swiper-slide info-hero__slide">
+                      <article class="info-hero__content">
+                        <div class="info-hero__images">
+                          <img src="./images/hero/house.jpg" alt="Image" />
+                        </div>
+                        <div class="info-hero__body">
+                          <h3 class="info-hero__title">56 Houses</h3>
+                          <div class="info-hero__text">Sold Monthly</div>
+                        </div>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--  Our Recommendation -->
+        <section class="recommendation">
+          <div class="recommendation__container">
+            <h4 class="recommendation__desc description">Our Recommendation</h4>
+            <!-- Slider main container -->
+            <div class="recommendation__swiper swiper">
+              <div class="recommendation__navigate">
+                <h2 class="recommendation__title title-section">Featured House</h2>
+                <nav class="recommendation__nav nav-recommendation">
+                  <ul class="nav-recommendation__list">
+                    <li data-id="house" class="nav-recommendation__item _icon-house active">House</li>
+                    <li data-id="villa" class="nav-recommendation__item _icon-villa">Villa</li>
+                    <li data-id="apartment" class="nav-recommendation__item _icon-apartment">Apartment</li>
+                  </ul>
+                </nav>
+                <div class="recommendation__button button-recommendation">
+                  <!-- If we need navigation buttons -->
+                  <div class="button-recommendation__arrow button-recommendation__arrow--prev _icon-arrow-nav"></div>
+                  <div class="button-recommendation__arrow button-recommendation__arrow--next _icon-arrow-nav"></div>
+                </div>
+              </div>
+              <!-- Additional required wrapper -->
+              <div class="recommendation__wrapper swiper-wrapper">
+                <!-- Slides -->
+
+                <div class="swiper-slide filter house">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/house01.jpg" alt="House" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-popular feature-recommendation feature-recommendation--popular"
+                      >
+                        Popular
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Roselands House</h3>
+                      <div class="slide-recommedation__price">$ 35.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human03.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Dianne Russell</div>
+                        <div class="author__text">Manchester, Kentucky</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter villa">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/villa01.jpg" alt="Villa" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-wallet feature-recommendation feature-recommendation--best"
+                      >
+                        Best Deals
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Woodlandside</h3>
+                      <div class="slide-recommedation__price">$ 20.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human01.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Robert Fox</div>
+                        <div class="author__text">Dr. San Jose, South Dakota</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter apartment">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img
+                        src="./images/recommendation/apartament01.jpg"
+                        alt="House"
+                        class="slide-recommedation__img"
+                      />
+                      <div
+                        class="slide-recommedation__feature _icon-wallet feature-recommendation feature-recommendation--best"
+                      >
+                        Best Deals
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">The Old Lighthouse</h3>
+                      <div class="slide-recommedation__price">$ 44.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human02.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Milla Novoles</div>
+                        <div class="author__text">Santa Ana, Illinois</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide filter house">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/house02.jpg" alt="House" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-house feature-recommendation feature-recommendation--new"
+                      >
+                        New House
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">House Ultra</h3>
+                      <div class="slide-recommedation__price">$ 45.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human01.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Jonh Gray</div>
+                        <div class="author__text">Manchester, Kentucky</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter villa">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/villa02.jpg" alt="Villa" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-popular feature-recommendation feature-recommendation--popular"
+                      >
+                        Popular
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Super Villa</h3>
+                      <div class="slide-recommedation__price">$ 60.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human02.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Elithabet Tailer</div>
+                        <div class="author__text">Dr. San Jose, South Dakota</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter apartment">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img
+                        src="./images/recommendation/apartament02.jpg"
+                        alt="House"
+                        class="slide-recommedation__img"
+                      />
+                      <div
+                        class="slide-recommedation__feature _icon-wallet feature-recommendation feature-recommendation--best"
+                      >
+                        Best Deals
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Lighthouse</h3>
+                      <div class="slide-recommedation__price">$ 24.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human01.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Ronald Richards</div>
+                        <div class="author__text">Santa Ana, Illinois</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+
+                <div class="swiper-slide filter house">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/house03.jpg" alt="House" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-house feature-recommendation feature-recommendation--new"
+                      >
+                        New House
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Roselands</h3>
+                      <div class="slide-recommedation__price">$ 25.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human02.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Dianne Russell</div>
+                        <div class="author__text">Manchester, Kentucky</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter house">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/house01.jpg" alt="House" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-popular feature-recommendation feature-recommendation--popular"
+                      >
+                        Popular
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Roselands House</h3>
+                      <div class="slide-recommedation__price">$ 35.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human03.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Dianne Russell</div>
+                        <div class="author__text">Manchester, Kentucky</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter villa">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/villa01.jpg" alt="Villa" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-wallet feature-recommendation feature-recommendation--best"
+                      >
+                        Best Deals
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Villa Comfort</h3>
+                      <div class="slide-recommedation__price">$ 25.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human03.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Jina Miratty</div>
+                        <div class="author__text">South Dakota</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter apartment">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img
+                        src="./images/recommendation/apartament03.jpg"
+                        alt="House"
+                        class="slide-recommedation__img"
+                      />
+                      <div
+                        class="slide-recommedation__feature _icon-popular feature-recommendation feature-recommendation--popular"
+                      >
+                        Popular
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Apartment</h3>
+                      <div class="slide-recommedation__price">$ 24.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human01.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Ronald Richards</div>
+                        <div class="author__text">Santa Ana, Illinois</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter house">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/house03.jpg" alt="House" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-house feature-recommendation feature-recommendation--new"
+                      >
+                        New House
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Roselands</h3>
+                      <div class="slide-recommedation__price">$ 25.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human02.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Dianne Russell</div>
+                        <div class="author__text">Manchester, Kentucky</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter villa">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/villa01.jpg" alt="Villa" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-wallet feature-recommendation feature-recommendation--best"
+                      >
+                        Best Deals
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Villa</h3>
+                      <div class="slide-recommedation__price">$ 20.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human01.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Robert Fox</div>
+                        <div class="author__text">Dr. San Jose, South Dakota</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="swiper-slide filter house">
+                  <article class="recommendation__slide slide-recommedation">
+                    <div class="slide-recommedation__image _ibg">
+                      <img src="./images/recommendation/house01.jpg" alt="House" class="slide-recommedation__img" />
+                      <div
+                        class="slide-recommedation__feature _icon-popular feature-recommendation feature-recommendation--popular"
+                      >
+                        Popular
+                      </div>
+                    </div>
+                    <div class="slide-recommedation__info">
+                      <h3 class="slide-recommedation__title">Roselands House</h3>
+                      <div class="slide-recommedation__price">$ 35.000.000</div>
+                    </div>
+                    <div class="slide-recommedation__author author">
+                      <div class="author__images">
+                        <img src="./images//people/human03.jpg" alt="Image" />
+                      </div>
+                      <div class="quthor__body">
+                        <div class="author__title">Dianne Russell</div>
+                        <div class="author__text">Manchester, Kentucky</div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sell">
+          <div class="sell__container">
+            <div class="sell__content">
+              <h4 class="sell__desc description">Ready to Sell!</h4>
+              <h2 class="sell__title title-section">Let’s tour and see our house!</h2>
+              <div class="sell__text">
+                <p>Houses recommended by our partners that have been curated to become the home of your dreams!</p>
+              </div>
+              <article class="sell__detail detail">
+                <h3 class="detail__title">House Detail</h3>
+                <div class="detail__items">
+                  <div class="detail__item item-detail _icon-bed">4 Bedrooms</div>
+                  <div class="detail__item item-detail _icon-bath">2 Bathrooms</div>
+                  <div class="detail__item item-detail _icon-garage">1 Carport</div>
+                  <div class="detail__item item-detail _icon-floor">2 Floors</div>
+                </div>
+              </article>
+              <div class="detail__contact contact-detail">
+                <div class="contact-detail__author author">
+                  <div class="author__images">
+                    <img src="./images//people/human03.jpg" alt="Image" />
+                  </div>
+                  <div class="quthor__body">
+                    <div class="author__title">Dianne Russell</div>
+                    <div class="author__text">Manager Director</div>
+                  </div>
+                </div>
+                <a href="tel:+6494461709" class="contact-detail__button button button--call">
+                  <div class="button__content _icon-phone">Contact Now</div>
+                </a>
+              </div>
+            </div>
+            <div class="sell__slider slider-sell">
+              <!-- Slider main container -->
+              <div class="slider-sell__swiper swiper">
+                <!-- Additional required wrapper -->
+                <div class="slider-sell__wrapper swiper-wrapper">
+                  <!-- Slides -->
+                  <div data-popup="#01" class="slider-sell__slide swiper-slide _ibg">
+                    <img src="images/sell/video.jpg" alt="Image" />
+                  </div>
+                  <div data-popup="#02" class="slider-sell__slide swiper-slide _ibg">
+                    <img src="images/recommendation/house01.jpg" alt="Image" />
+                  </div>
+                  <div data-popup="#03" class="slider-sell__slide swiper-slide _ibg">
+                    <img src="images/recommendation/house02.jpg" alt="Image" />
+                  </div>
+                  <div data-popup="#04" class="slider-sell__slide swiper-slide _ibg">
+                    <img src="images/recommendation/house03.jpg" alt="Image" />
+                  </div>
+                </div>
+              </div>
+
+              <div class="thumbs__swiper swiper">
+                <!-- Additional required wrapper -->
+                <div class="thumbs__wrapper swiper-wrapper">
+                  <!-- Slides -->
+                  <div data-popup="#01" class="thumbs__slide swiper-slide _ibg">
+                    <img src="images/sell/video.jpg" alt="Image" />
+                  </div>
+                  <div data-popup="#02" class="thumbs__slide swiper-slide _ibg">
+                    <img src="images/recommendation/house01.jpg" alt="Image" />
+                  </div>
+                  <div data-popup="#03" class="thumbs__slide swiper-slide _ibg">
+                    <img src="images/recommendation/house02.jpg" alt="Image" />
+                  </div>
+                  <div data-popup="#04" class="thumbs__slide swiper-slide _ibg">
+                    <img src="images/recommendation/house03.jpg" alt="Image" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <!-- Footer -->
+      <!-- Popup start -->
+      <div id="01" class="popup">
+        <div class="popup__body">
+          <div class="popup__content">
+            <a href="#header" class="popup__close close-popup">Close</a>
+            <video
+              controls
+              class="popup__video"
+              src="https://media.istockphoto.com/id/1446996914/uk/%D0%B2%D1%96%D0%B4%D0%B5%D0%BE/%D0%BD%D0%B0%D0%B1%D0%BB%D0%B8%D0%B6%D0%B5%D0%BD%D0%BD%D1%8F-%D0%B4%D0%BE-%D0%B7%D0%B0%D0%BC%D1%96%D1%81%D1%8C%D0%BA%D0%BE%D0%B3%D0%BE-%D0%B1%D1%83%D0%B4%D0%B8%D0%BD%D0%BA%D1%83-%D0%B2-%D0%B0%D0%BC%D0%B5%D1%80%D0%B8%D0%BA%D0%B0%D0%BD%D1%81%D1%8C%D0%BA%D0%BE%D0%BC%D1%83-%D0%BA%D0%BE%D0%BB%D0%BE%D0%BD%D1%96%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%BC%D1%83-%D1%81%D1%82%D0%B8%D0%BB%D1%96.mp4?s=mp4-640x640-is&k=20&c=ju9aSfd1Q5eQbc1NKaHR6Pa6pbvd4RLcYLLybgDPj5Y="
+            ></video>
+            <!-- <img src="images/sell/video.jpg" alt="Image" /> -->
+          </div>
+        </div>
+      </div>
+      <div id="02" class="popup">
+        <div class="popup__body">
+          <div class="popup__content">
+            <a href="#header" class="popup__close close-popup">Close</a>
+            <img class="popup__image" src="images/recommendation/house01.jpg" alt="Image" />
+            <!-- <img src="images/sell/video.jpg" alt="Image" /> -->
+          </div>
+        </div>
+      </div>
+      <div id="03" class="popup">
+        <div class="popup__body">
+          <div class="popup__content">
+            <a href="#header" class="popup__close close-popup">Close</a>
+            <img class="popup__image" src="images/recommendation/house02.jpg" alt="Image" />
+            <!-- <img src="images/sell/video.jpg" alt="Image" /> -->
+          </div>
+        </div>
+      </div>
+      <div id="04" class="popup">
+        <div class="popup__body">
+          <div class="popup__content">
+            <a href="#header" class="popup__close close-popup">Close</a>
+            <img class="popup__image" src="images/recommendation/house03.jpg" alt="Image" />
+            <!-- <img src="images/sell/video.jpg" alt="Image" /> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Popup end -->
+    </div>
+  </body>
+</html>

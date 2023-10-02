@@ -1,0 +1,36 @@
+@import "null";
+
+// Стили для отзывчивых картинок (IBG)
+
+[class*="-ibg"] {
+    position: relative;
+    img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}
+[class*="-ibg_contain"] {
+    img {
+        object-fit: contain;
+    }
+}
+._ibg {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+._ibg img {
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
