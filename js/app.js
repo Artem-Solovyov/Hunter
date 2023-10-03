@@ -65,22 +65,44 @@ function menuInit() {
 menuInit();
 
 // Spollers
-
-let _slideToggle = (target, duration = 500) => {
-  if (target.hidden) {
-    return _slideDown(target, duration);
-  } else {
-    return _slideUp(target, duration);
-  }
-};
-let _slideDown = (target, duration = 500, showmore = 0) => {
+// DATA-SPOLLERS
+let _slideUp = (target, duration = 500) => {
   if (!target.classList.contains("_slide")) {
     target.classList.add("_slide");
-    target.hidden = target.hidden ? false : null;
-    showmore ? target.style.removeProperty("height") : null;
+    target.style.transitionProperty = "height, margin, padding";
+    target.style.transitionDuration = duration + "ms";
+    target.style.height = target.offsetHeight + "px";
+    target.offsetHeight;
+    target.style.overflow = "hidden";
+    target.style.height = 0;
+    target.style.paddingTop = 0;
+    target.style.paddingBottom = 0;
+    target.style.marginTop = 0;
+    target.style.marginBottom = 0;
+    window.setTimeout(() => {
+      target.hidden = true;
+      target.style.removeProperty("height");
+      target.style.removeProperty("padding-top");
+      target.style.removeProperty("padding-bottom");
+      target.style.removeProperty("margin-top");
+      target.style.removeProperty("margin-bottom");
+      target.style.removeProperty("overflow");
+      target.style.removeProperty("transition-duration");
+      target.style.removeProperty("transition-property");
+      target.classList.remove("_slide");
+    }, duration);
+  }
+};
+
+let _slideDown = (target, duration = 500) => {
+  if (!target.classList.contains("_slide")) {
+    target.classList.add("_slide");
+    if (target.hidden) {
+      target.hidden = false;
+    }
     let height = target.offsetHeight;
     target.style.overflow = "hidden";
-    target.style.height = showmore ? `${showmore}px` : `0px`;
+    target.style.height = 0;
     target.style.paddingTop = 0;
     target.style.paddingBottom = 0;
     target.style.marginTop = 0;
@@ -99,97 +121,91 @@ let _slideDown = (target, duration = 500, showmore = 0) => {
       target.style.removeProperty("transition-duration");
       target.style.removeProperty("transition-property");
       target.classList.remove("_slide");
-      // Создаем событие
-      document.dispatchEvent(
-        new CustomEvent("slideDownDone", {
-          detail: {
-            target: target,
-          },
-        })
-      );
     }, duration);
   }
 };
-let _slideUp = (target, duration = 500, showmore = 0) => {
-  if (!target.classList.contains("_slide")) {
-    target.classList.add("_slide");
-    target.style.transitionProperty = "height, margin, padding";
-    target.style.transitionDuration = duration + "ms";
-    target.style.height = `${target.offsetHeight}px`;
-    target.offsetHeight;
-    target.style.overflow = "hidden";
-    target.style.height = showmore ? `${showmore}px` : `0px`;
-    target.style.paddingTop = 0;
-    target.style.paddingBottom = 0;
-    target.style.marginTop = 0;
-    target.style.marginBottom = 0;
-    window.setTimeout(() => {
-      target.hidden = !showmore ? true : false;
-      !showmore ? target.style.removeProperty("height") : null;
-      target.style.removeProperty("padding-top");
-      target.style.removeProperty("padding-bottom");
-      target.style.removeProperty("margin-top");
-      target.style.removeProperty("margin-bottom");
-      !showmore ? target.style.removeProperty("overflow") : null;
-      target.style.removeProperty("transition-duration");
-      target.style.removeProperty("transition-property");
-      target.classList.remove("_slide");
-      // Создаем событие
-      document.dispatchEvent(
-        new CustomEvent("slideUpDone", {
-          detail: {
-            target: target,
-          },
-        })
-      );
-    }, duration);
+
+let _slideToggle = (target, duration = 500) => {
+  if (target.hidden) {
+    return _slideDown(target, duration);
+  } else {
+    return _slideUp(target, duration);
   }
 };
+
 const spollersArray = document.querySelectorAll("[data-spollers]");
 if (spollersArray.length > 0) {
-  // Получение обычных спойлеров
   const spollersRegular = Array.from(spollersArray).filter(function (item, index, self) {
     return !item.dataset.spollers.split(",")[0];
   });
-  // Инициализация обычных спойлеров
-  if (spollersRegular.length) {
+
+  if (spollersRegular.length > 0) {
     initSpollers(spollersRegular);
   }
-  // Получение слойлеров с медиа запросами
-  let mdQueriesArray = dataMediaQueries(spollersArray, "spollers");
-  if (mdQueriesArray && mdQueriesArray.length) {
-    mdQueriesArray.forEach((mdQueriesItem) => {
-      // Событие
-      mdQueriesItem.matchMedia.addEventListener("change", function () {
-        initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+
+  const spollersMedia = Array.from(spollersArray).filter(function (item, index, self) {
+    return item.dataset.spollers.split(",")[0];
+  });
+
+  if (spollersMedia.length > 0) {
+    const breakpointsArray = [];
+    spollersMedia.forEach((item) => {
+      const params = item.dataset.spollers;
+      const breakpoint = {};
+      const paramsArray = params.split(",");
+      breakpoint.value = paramsArray[0];
+      breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
+      breakpoint.item = item;
+      breakpointsArray.push(breakpoint);
+    });
+
+    let mediaQueries = breakpointsArray.map(function (item) {
+      return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
+    });
+    mediaQueries = mediaQueries.filter(function (item, index, self) {
+      return self.indexOf(item) === index;
+    });
+
+    mediaQueries.forEach((breakpoint) => {
+      const paramsArray = breakpoint.split(",");
+      const mediaBreakpoint = paramsArray[1];
+      const mediaType = paramsArray[2];
+      const matchMedia = window.matchMedia(paramsArray[0]);
+
+      const spollersArray = breakpointsArray.filter(function (item) {
+        if (item.value === mediaBreakpoint && item.type === mediaType) {
+          return true;
+        }
       });
-      initSpollers(mdQueriesItem.itemsArray, mdQueriesItem.matchMedia);
+
+      matchMedia.addListener(function () {
+        initSpollers(spollersArray, matchMedia);
+      });
+      initSpollers(spollersArray, matchMedia);
     });
   }
-  // Инициализация
   function initSpollers(spollersArray, matchMedia = false) {
     spollersArray.forEach((spollersBlock) => {
       spollersBlock = matchMedia ? spollersBlock.item : spollersBlock;
       if (matchMedia.matches || !matchMedia) {
-        spollersBlock.classList.add("_spoller-init");
+        spollersBlock.classList.add("_init");
         initSpollerBody(spollersBlock);
         spollersBlock.addEventListener("click", setSpollerAction);
       } else {
-        spollersBlock.classList.remove("_spoller-init");
+        spollersBlock.classList.remove("_init");
         initSpollerBody(spollersBlock, false);
         spollersBlock.removeEventListener("click", setSpollerAction);
       }
     });
   }
-  // Работа с контентом
+
   function initSpollerBody(spollersBlock, hideSpollerBody = true) {
-    let spollerTitles = spollersBlock.querySelectorAll("[data-spoller]");
-    if (spollerTitles.length) {
-      spollerTitles = Array.from(spollerTitles).filter((item) => item.closest("[data-spollers]") === spollersBlock);
+    const spollerTitles = spollersBlock.querySelectorAll("[data-spoller]");
+    if (spollerTitles.length > 0) {
       spollerTitles.forEach((spollerTitle) => {
         if (hideSpollerBody) {
           spollerTitle.removeAttribute("tabindex");
-          if (!spollerTitle.classList.contains("_spoller-active")) {
+          if (!spollerTitle.classList.contains("_active")) {
             spollerTitle.nextElementSibling.hidden = true;
           }
         } else {
@@ -201,93 +217,26 @@ if (spollersArray.length > 0) {
   }
   function setSpollerAction(e) {
     const el = e.target;
-    if (el.closest("[data-spoller]")) {
-      const spollerTitle = el.closest("[data-spoller]");
+    if (el.hasAttribute("data-spoller") || el.closest("[data-spoller]")) {
+      const spollerTitle = el.hasAttribute("data-spoller") ? el : el.closest("[data-spoller]");
       const spollersBlock = spollerTitle.closest("[data-spollers]");
-      const oneSpoller = spollersBlock.hasAttribute("data-one-spoller");
-      const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
+      const oneSpoller = spollersBlock.hasAttribute("data-one-spoller") ? true : false;
+
       if (!spollersBlock.querySelectorAll("._slide").length) {
-        if (oneSpoller && !spollerTitle.classList.contains("_spoller-active")) {
+        if (oneSpoller && !spollerTitle.classList.contains("_active")) {
           hideSpollersBody(spollersBlock);
         }
-        spollerTitle.classList.toggle("_spoller-active");
-        _slideToggle(spollerTitle.nextElementSibling, spollerSpeed);
+        spollerTitle.classList.toggle("_active");
+        _slideToggle(spollerTitle.nextElementSibling, 500);
       }
       e.preventDefault();
     }
   }
   function hideSpollersBody(spollersBlock) {
-    const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._spoller-active");
-    const spollerSpeed = spollersBlock.dataset.spollersSpeed ? parseInt(spollersBlock.dataset.spollersSpeed) : 500;
-    if (spollerActiveTitle && !spollersBlock.querySelectorAll("._slide").length) {
-      spollerActiveTitle.classList.remove("_spoller-active");
-      _slideUp(spollerActiveTitle.nextElementSibling, spollerSpeed);
-    }
-  }
-  // Закрытие при клике вне спойлера
-  const spollersClose = document.querySelectorAll("[data-spoller-close]");
-  if (spollersClose.length) {
-    document.addEventListener("click", function (e) {
-      const el = e.target;
-      if (!el.closest("[data-spollers]")) {
-        spollersClose.forEach((spollerClose) => {
-          const spollersBlock = spollerClose.closest("[data-spollers]");
-          const spollerSpeed = spollersBlock.dataset.spollersSpeed
-            ? parseInt(spollersBlock.dataset.spollersSpeed)
-            : 500;
-          spollerClose.classList.remove("_spoller-active");
-          _slideUp(spollerClose.nextElementSibling, spollerSpeed);
-        });
-      }
-    });
-  }
-}
-// Обработа медиа запросов из атрибутов
-function dataMediaQueries(array, dataSetValue) {
-  // Получение объектов с медиа запросами
-  const media = Array.from(array).filter(function (item, index, self) {
-    if (item.dataset[dataSetValue]) {
-      return item.dataset[dataSetValue].split(",")[0];
-    }
-  });
-  // Инициализация объектов с медиа запросами
-  if (media.length) {
-    const breakpointsArray = [];
-    media.forEach((item) => {
-      const params = item.dataset[dataSetValue];
-      const breakpoint = {};
-      const paramsArray = params.split(",");
-      breakpoint.value = paramsArray[0];
-      breakpoint.type = paramsArray[1] ? paramsArray[1].trim() : "max";
-      breakpoint.item = item;
-      breakpointsArray.push(breakpoint);
-    });
-    // Получаем уникальные брейкпоинты
-    let mdQueries = breakpointsArray.map(function (item) {
-      return "(" + item.type + "-width: " + item.value + "px)," + item.value + "," + item.type;
-    });
-    mdQueries = uniqArray(mdQueries);
-    const mdQueriesArray = [];
-
-    if (mdQueries.length) {
-      // Работаем с каждым брейкпоинтом
-      mdQueries.forEach((breakpoint) => {
-        const paramsArray = breakpoint.split(",");
-        const mediaBreakpoint = paramsArray[1];
-        const mediaType = paramsArray[2];
-        const matchMedia = window.matchMedia(paramsArray[0]);
-        // Объекты с нужными условиями
-        const itemsArray = breakpointsArray.filter(function (item) {
-          if (item.value === mediaBreakpoint && item.type === mediaType) {
-            return true;
-          }
-        });
-        mdQueriesArray.push({
-          itemsArray,
-          matchMedia,
-        });
-      });
-      return mdQueriesArray;
+    const spollerActiveTitle = spollersBlock.querySelector("[data-spoller]._active");
+    if (spollerActiveTitle) {
+      spollerActiveTitle.classList.remove("_active");
+      _slideUp(spollerActiveTitle.nextElementSibling, 500);
     }
   }
 }
@@ -297,7 +246,7 @@ new Swiper(".info-hero", {
   speed: 800,
   autoplay: {
     delay: 2000,
-    pauseOnMouseEnter: true,
+    // pauseOnMouseEnter: true,
   },
   spaceBetween: 16,
   slidesPerView: "auto",
@@ -349,6 +298,32 @@ const swiper = () => {
   });
 };
 swiper();
+
+const swiperReview = new Swiper(".slider-review", {
+  speed: 1000,
+  // Optional parameters
+  loop: true,
+  slidesPerView: 1.58,
+  centeredSlides: true,
+  spaceBetween: 56,
+  parallax: true,
+  // If we need pagination
+  pagination: {
+    el: ".slider-review__pagination",
+    clickable: true,
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
+    },
+    500: {
+      slidesPerView: 1.2,
+    },
+    900: {
+      slidesPerView: 1.58,
+    },
+  },
+});
 // Filter
 const list = document.querySelector(".nav-recommendation__list");
 const items = document.querySelectorAll(".filter");
@@ -481,5 +456,87 @@ document.addEventListener("keydown", function (e) {
   if (e.which === 27) {
     const popupActive = document.querySelector(".popup.open");
     popupClose(popupActive);
+  }
+});
+
+// Form Subscribe
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form");
+
+  form.addEventListener("submit", formSend);
+
+  async function formSend(e) {
+    e.preventDefault();
+
+    let error = formValidate(form);
+
+    let formData = new FormData(form);
+    // formData.append("image", formImage.files[0]);
+
+    if (error === 0) {
+      alert("Successfully sent");
+      form.reset();
+      // form.classList.add("_sending");
+      // let response = await fetch("sendmail.php", {
+      //   method: "POST",
+      //   body: formData,
+      // });
+
+      // if (response.ok) {
+      //   let result = await response.json();
+      //   alert(result.message);
+
+      //   // formPreview.innerHTML = "";
+
+      //   form.reset();
+      //   grecaptcha.reset();
+
+      //   form.classList.remove("_sending");
+      // } else {
+      //   alert("Error");
+      //   form.classList.remove("_sending");
+      // }
+    } else {
+      alert("Fill in required fields");
+    }
+  }
+
+  function formValidate(form) {
+    let error = 0;
+    let formReq = document.querySelectorAll("._req");
+
+    formReq.forEach((input, index) => {
+      formRemoveError(input);
+
+      if (input.classList.contains("_email")) {
+        if (emailTest(input)) {
+          formAddError(input);
+          error++;
+        }
+      } else if (input.getAttribute("type") === "checkbox" && input.checked === false) {
+        formAddError(input);
+        error++;
+      } else {
+        if (input.value === "") {
+          formAddError(input);
+          error++;
+        }
+      }
+    });
+    return error;
+  }
+  // add class error
+  function formAddError(input) {
+    input.parentElement.classList.add("_error");
+    input.classList.add("_error");
+  }
+  // remove class error
+  function formRemoveError(input) {
+    input.parentElement.classList.remove("_error");
+    input.classList.remove("_error");
+  }
+  // Email validation
+  function emailTest(input) {
+    return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
   }
 });
